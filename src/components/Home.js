@@ -1,38 +1,34 @@
-import React, { useEffect } from "react";
-const { DateTime } = require('luxon');
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import formatDate from '../helpers/formatDate.js';
 
 const Home = () => {
+	const [posts, setPosts] = useState([]);
+
 	// Get API data on componentDidMount
 	useEffect(() => {
-		const blogPosts = document.getElementById('blog-posts');
 		fetch('http://localhost:3000/api/posts', {mode: 'cors'})
 		.then(function(res) { return res.json(); })
-		.then(function(res) {
-			res.forEach(post => {
-				const postEl = document.createElement('div');
-				postEl.classList.add('blog-post');
-
-				const title = document.createElement('h1');
-				title.classList.add('blog-post-title');
-				title.innerHTML = post.title;
-
-				const author = document.createElement('div');
-				author.classList.add('blog-post-author');
-				author.innerHTML = 'by ' + post.author.username;
-
-				const date = document.createElement('div');
-				date.classList.add('blog-post-date');
-				date.innerHTML = DateTime.fromJSDate(new Date(post.date)).toLocaleString(DateTime.DATETIME_MED);
-
-				postEl.append(title, author, date);
-				blogPosts.append(postEl);
-			});
-		});
+		.then(function(res) { setPosts(res); });
 	}, []);
 
 	return(
 		<main id="home">
-			<div id="blog-posts"></div>
+			<div id="blog-posts">
+				{posts.length !== 0 ?
+					posts.map((post) => {
+						return(
+							<Link to={'/posts/' + post._id} key={post._id}>
+								<div className="blog-post">
+									<h1 className="blog-post-title">{post.title}</h1>
+									by <div className="blog-post-author">{post.author.username}</div>
+									<div className="blog-post-date">{formatDate(post.date)}</div>
+								</div>
+							</Link>
+						)
+					})
+				: null}
+			</div>
 		</main>
 	);
 };
