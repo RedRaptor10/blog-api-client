@@ -33,7 +33,11 @@ const LogIn = () => {
         .then(function(res) {
             if (res.errors) { setFormErrors(res.errors); } // Username/password required
             else if (!res.user) { setFormErrors([{ msg: res.info.message }]); } // Incorrect username/password
-            else { window.location.href = '/' } // Success, redirect to Home page
+            else {
+                // Success. Set token as a cookie and redirect to Home page
+                document.cookie = 'blog_api_token=' + res.token + '; SameSite=Lax; path=/';
+                window.location.href = '/';
+            }
         });
     };
 
