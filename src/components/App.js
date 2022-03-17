@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import LogIn from "./LogIn";
+import SignUp from "./SignUp";
 import Home from "./Home";
 import Footer from "./Footer";
 import User from "./User";
@@ -72,10 +73,11 @@ const App = () => {
 
 	return(
 		<HashRouter>
-			<Header user={user} />
+			<Header user={user} setUser={setUser} deleteCookie={deleteCookie} />
 			<Routes>
 				<Route exact path="/" element={<Home />} />
 				<Route exact path="/login" element={<LogIn />} />
+				<Route exact path="/signup" element={<SignUp />} />
 				<Route exact path="/users/:username" element={<User />} />
 				<Route exact path="/posts/:postId" element={<Post />} />
 			</Routes>

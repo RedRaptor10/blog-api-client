@@ -1,16 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({user}) => {
+const Header = ({user, setUser, deleteCookie}) => {
+    const logOut = () => {
+        fetch('http://localhost:3000/api/logout', {mode: 'cors'})
+        .then(function() {
+            setUser();
+            deleteCookie('blog_api_token');
+            window.location.href = '/';
+        });
+    };
+
     return(
         <header>
             <h1>
                 <Link to="/">Blog</Link>
             </h1>
             {user ?
-                <div>{user.username}</div>
+                <div>
+                    <div>{user.username}</div>
+                    <div onClick={logOut}>Log Out</div>
+                </div>
             :
-                <Link to="/login">Log In</Link>
+                <div>
+                    <Link to="/login">Log In</Link>
+                    <Link to="/signup">Sign Up</Link>
+                </div>
             }
         </header>
     );
