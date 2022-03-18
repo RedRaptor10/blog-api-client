@@ -9,6 +9,7 @@ const Post = ({user, setUser, getCookie, deleteCookie}) => {
     const [form, setForm] = useState({ content: '' });
     const [formErrors, setFormErrors] = useState([]);
     const [comments, setComments] = useState([]);
+    const [commentToUpdate, setCommentToUpdate] = useState();
 
     // Get API data on componentDidUpdate
 	useEffect(() => {
@@ -112,8 +113,8 @@ const Post = ({user, setUser, getCookie, deleteCookie}) => {
                         {comments.length !== 0 ?
                             comments.map(comment => {
                                 return(
-                                    <Comment key={comment._id} user={user} setUser={setUser} comment={comment} comments={comments} setComments={setComments}
-                                        getCookie={getCookie} deleteCookie={deleteCookie} />
+                                    <Comment key={comment._id} user={user} setUser={setUser} comment={comment} setComments={setComments}
+                                        getCookie={getCookie} deleteCookie={deleteCookie} commentToUpdate={commentToUpdate} setCommentToUpdate={setCommentToUpdate} />
                                 )
                             })
                         : null}
