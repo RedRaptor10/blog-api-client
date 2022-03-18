@@ -79,7 +79,7 @@ const App = () => {
 				<Route exact path="/login" element={<LogIn />} />
 				<Route exact path="/signup" element={<SignUp />} />
 				<Route exact path="/users/:username" element={<User />} />
-				<Route exact path="/posts/:postId" element={<Post />} />
+				<Route exact path="/posts/:postId" element={<Post user={user} setUser={setUser} getCookie={getCookie} deleteCookie={deleteCookie} />} />
 			</Routes>
 			<Footer />
 		</HashRouter>
