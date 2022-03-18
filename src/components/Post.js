@@ -15,7 +15,7 @@ const Post = ({user, setUser, getCookie, deleteCookie}) => {
 		.then(function(res) { return res.json(); })
         .then(function(res) { setPost(res); });
 
-        fetch('http://localhost:3000/api/posts/' + postId + '/comments', {mode: 'cors'})
+        fetch('http://localhost:3000/api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
         .then(function(res) { return res.json(); })
         .then(function(res) { setComments(res); });
     }, [postId]);
@@ -71,8 +71,9 @@ const Post = ({user, setUser, getCookie, deleteCookie}) => {
                 let commentFormInput = document.getElementById('comment-form-input');
                 commentFormInput.value = '';
                 setForm({ content: '' });
+                setFormErrors([]);
 
-                fetch('http://localhost:3000/api/posts/' + postId + '/comments', {mode: 'cors'})
+                fetch('http://localhost:3000/api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
                 .then(function(res) { return res.json(); })
                 .then(function(res) { setComments(res); });
             }
