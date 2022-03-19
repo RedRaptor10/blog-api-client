@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
-import Header from "./Header";
-import LogIn from "./LogIn";
-import SignUp from "./SignUp";
-import Home from "./Home";
-import Footer from "./Footer";
-import User from "./User";
-import UserEdit from "./UserEdit";
-import Post from "./Post";
-import { getCookie, deleteCookie } from "../helpers/cookies.js";
+import React, { useState, useEffect } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Header from './Header';
+import LogIn from './LogIn';
+import SignUp from './SignUp';
+import Home from './Home';
+import Footer from './Footer';
+import User from './User';
+import UserEdit from './UserEdit';
+import Post from './Post';
+import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const App = () => {
 	const [user, setUser] = useState();

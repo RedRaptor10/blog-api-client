@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getCookie, deleteCookie } from "../helpers/cookies.js";
+import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const UserEdit = ({user, setUser}) => {
     const [form, setForm] = useState({

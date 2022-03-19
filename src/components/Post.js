@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import formatDate from '../helpers/formatDate.js';
-import Comment from "./Comment";
-import { getCookie, deleteCookie } from "../helpers/cookies.js";
+import Comment from './Comment';
+import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const Post = ({user, setUser}) => {
     const { postId } = useParams(); // Get post id from url
@@ -114,7 +114,7 @@ const Post = ({user, setUser}) => {
                             comments.map(comment => {
                                 return(
                                     <Comment key={comment._id} user={user} setUser={setUser} comment={comment} setComments={setComments}
-                                        getCookie={getCookie} deleteCookie={deleteCookie} commentToUpdate={commentToUpdate} setCommentToUpdate={setCommentToUpdate} />
+                                        commentToUpdate={commentToUpdate} setCommentToUpdate={setCommentToUpdate} />
                                 )
                             })
                         : null}
