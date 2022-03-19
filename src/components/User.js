@@ -14,7 +14,7 @@ const User = ({user}) => {
 
 	return(
 		<main id="user">
-			{profile ?
+			{user && user.username === profile.username ?
 				<div id="user-info">
 					<div>{profile.username}</div>
 					<div>{profile.role}</div>
