@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return(
         <footer>
-            Footer
+            Blog API site created through <a href="https://www.theodinproject.com">TheOdinProject</a> online course.
         </footer>
     );
 };

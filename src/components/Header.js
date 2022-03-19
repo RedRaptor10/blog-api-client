@@ -18,13 +18,19 @@ const Header = ({user, setUser, deleteCookie}) => {
             </h1>
             {user ?
                 <div>
-                    <Link to={`/users/${user.username}`}>{user.username}</Link>
-                    <div onClick={logOut}>Log Out</div>
+                    <Link to={`/users/${user.username}`}>
+                        <button>{user.username}</button>
+                    </Link>
+                    <button onClick={logOut}>Log Out</button>
                 </div>
             :
                 <div>
-                    <Link to="/login">Log In</Link>
-                    <Link to="/signup">Sign Up</Link>
+                    <Link to="/login">
+                        <button>Log In</button>
+                    </Link>
+                    <Link to="/signup">
+                        <button>Sign Up</button>
+                    </Link>
                 </div>
             }
         </header>
