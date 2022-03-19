@@ -50,7 +50,7 @@ const Comment = ({user, setUser, comment, setComments, getCookie, deleteCookie, 
             }
         })
         .then(function(res) {
-            // Success. Hide update comment form and etch comments again.
+            // Success. Hide update comment form and fetch comments again.
             setCommentToUpdate();
 
             fetch('http://localhost:3000/api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
@@ -106,7 +106,7 @@ const Comment = ({user, setUser, comment, setComments, getCookie, deleteCookie, 
             <div>{formatDate(comment.date)}</div>
             {commentToUpdate === comment._id ?
                 <form className="comment-update-form" action="">
-                    <textarea id="comment-update-form-input" type="textarea" name="content" onChange={handleUpdateChange} value={comment.content}></textarea>
+                    <textarea id="comment-update-form-input" type="textarea" name="content" onChange={handleUpdateChange} value={commentUpdateForm.content}></textarea>
                     <button type="submit" name="submit" onClick={updateComment}>Update</button>
                 </form>
             :

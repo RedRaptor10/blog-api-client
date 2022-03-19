@@ -24,7 +24,6 @@ const Post = ({user, setUser, getCookie, deleteCookie}) => {
 
     const handleChange = event => {
         setForm({
-            ...form,
             [event.target.name]: event.target.value
         });
     };

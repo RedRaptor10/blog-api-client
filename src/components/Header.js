@@ -18,7 +18,7 @@ const Header = ({user, setUser, deleteCookie}) => {
             </h1>
             {user ?
                 <div>
-                    <div>{user.username}</div>
+                    <Link to={`/users/${user.username}`}>{user.username}</Link>
                     <div onClick={logOut}>Log Out</div>
                 </div>
             :

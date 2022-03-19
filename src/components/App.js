@@ -6,6 +6,7 @@ import SignUp from "./SignUp";
 import Home from "./Home";
 import Footer from "./Footer";
 import User from "./User";
+import UserEdit from "./UserEdit";
 import Post from "./Post";
 
 const App = () => {
@@ -78,7 +79,8 @@ const App = () => {
 				<Route exact path="/" element={<Home />} />
 				<Route exact path="/login" element={<LogIn />} />
 				<Route exact path="/signup" element={<SignUp />} />
-				<Route exact path="/users/:username" element={<User />} />
+				<Route exact path="/users/:username" element={<User user={user} />} />
+				<Route exact path="/users/:username/edit" element={<UserEdit user={user} setUser={setUser} getCookie={getCookie} deleteCookie={deleteCookie} />} />
 				<Route exact path="/posts/:postId" element={<Post user={user} setUser={setUser} getCookie={getCookie} deleteCookie={deleteCookie} />} />
 			</Routes>
 			<Footer />
