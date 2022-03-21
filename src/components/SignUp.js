@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SignUp = () => {
+const SignUp = ({user}) => {
     const [form, setForm] = useState({
         username: '',
         password: '',
@@ -44,24 +44,28 @@ const SignUp = () => {
     };
 
 	return(
-		<main id="sign-up">
-            <form id="sign-up-form" action="">
-                <label htmlFor="username">Username</label>
-                <input type="text" name="username" onChange={handleChange}></input>
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" onChange={handleChange}></input>
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input type="password" name="confirmPassword" onChange={handleChange}></input>
-                <button type="submit" name="submit" onClick={submitForm}>Sign Up</button>
-                {formErrors.length !== 0 ?
-                    formErrors.map((formError, i) => {
-                        return(
-                            <div key={i}>{formError.msg}</div>
-                        )
-                    })
-                : null}
-            </form>
-		</main>
+        !user ?
+            <main id="sign-up">
+                <form id="sign-up-form" action="">
+                    <label htmlFor="username">Username</label>
+                    <input type="text" name="username" onChange={handleChange}></input>
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" onChange={handleChange}></input>
+                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" onChange={handleChange}></input>
+                    <button type="submit" name="submit" onClick={submitForm}>Sign Up</button>
+                    {formErrors.length !== 0 ?
+                        <ul id="form-errors">
+                            {formErrors.map((formError, i) => {
+                                return(
+                                    <li key={i}>{formError.msg}</li>
+                                )
+                            })}
+                        </ul>
+                    : null}
+                </form>
+            </main>
+        : null
 	);
 };
 

@@ -109,11 +109,13 @@ const Post = ({user, setUser}) => {
                             <textarea id="comment-form-input" type="textarea" name="content" onChange={handleChange}></textarea>
                             <button type="submit" name="submit" onClick={submitForm}>Submit</button>
                             {formErrors.length !== 0 ?
-                                formErrors.map((formError, i) => {
-                                    return(
-                                        <p key={i}>{formError.msg}</p>
-                                    )
-                                })
+                                <ul id="form-errors">
+                                    {formErrors.map((formError, i) => {
+                                        return(
+                                            <li key={i}>{formError.msg}</li>
+                                        )
+                                    })}
+                                </ul>
                             : null}
                         </form>
                     : null}

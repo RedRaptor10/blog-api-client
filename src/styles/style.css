@@ -188,6 +188,40 @@ main {
   margin-top: 8px;
 }
 
+/* Log In */
+#log-in-form, #sign-up-form {
+  width: 25%;
+  margin: 0 auto 0 auto;
+}
+
+#log-in-form input, #sign-up-form input {
+  display: block;
+  background: var(--primary-color);
+  width: 100%;
+  margin: 12px 0 12px 0;
+  color: #fff;
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+}
+
+#log-in-form button, #sign-up-form button {
+  background: var(--primary-color);
+  padding: 4px 16px 4px 16px;
+  color: var(--color);
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+#log-in-form button:hover, #sign-up-form button:hover {
+  color: #fff;
+}
+
+#form-errors {
+  list-style: disc;
+  margin-top: 12px;
+}
+
 /* Post */
 #post a {
   color: var(--link-color);

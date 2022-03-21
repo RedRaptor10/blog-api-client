@@ -50,11 +50,13 @@ const LogIn = () => {
                 <input type="password" name="password" onChange={handleChange}></input>
                 <button type="submit" name="submit" onClick={submitForm}>Log In</button>
                 {formErrors.length !== 0 ?
-                    formErrors.map((formError, i) => {
-                        return(
-                            <div key={i}>{formError.msg}</div>
-                        )
-                    })
+                    <ul id="form-errors">
+                        {formErrors.map((formError, i) => {
+                            return(
+                                <li key={i}>{formError.msg}</li>
+                            )
+                        })}
+                    </ul>
                 : null}
             </form>
 		</main>
