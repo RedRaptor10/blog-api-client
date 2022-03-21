@@ -114,16 +114,18 @@ const UserEdit = ({user, setUser}) => {
                         <input type="password" name="confirmPassword" onChange={handleChange}></input>
                         <button type="submit" name="submit" onClick={updateUser}>Update</button>
                         {formErrors.length !== 0 ?
-                            formErrors.map((formError, i) => {
-                                return(
-                                    <div key={i}>{formError.msg}</div>
-                                )
-                            })
+                            <ul id="form-errors">
+                                {formErrors.map((formError, i) => {
+                                    return(
+                                        <li key={i}>{formError.msg}</li>
+                                    )
+                                })}
+                            </ul>
                         : null}
                     </form>
-                    <button onClick={() => {toggleDelete ? setToggleDelete(false) : setToggleDelete(true); }}>Delete</button>
+                    <button id="delete-btn" onClick={() => {toggleDelete ? setToggleDelete(false) : setToggleDelete(true); }}>Delete</button>
                     {toggleDelete ?
-                        <div>
+                        <div id="delete-prompt">
                             <div>Are you sure you want to delete your account?</div>
                             <button onClick={deleteUser}>Confirm Delete</button>
                             <button onClick={() => {setToggleDelete(false); }}>Cancel</button>

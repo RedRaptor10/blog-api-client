@@ -14,15 +14,15 @@ const User = ({user}) => {
 
 	return(
 		<main id="user">
+			<h1>User Profile</h1>
+			<hr />
+			<div>Username: {profile.username}</div>
+			<div>Role: {profile.role}</div>
 			{user && user.username === profile.username ?
-				<div id="user-info">
-					<div>{profile.username}</div>
-					<div>{profile.role}</div>
-					{user ?
-						<Link to={`/users/${user.username}/edit`}>Edit</Link>
-					: null}
+				<div>
+					<Link to={`/users/${user.username}/edit`}>Edit Profile</Link>
 				</div>
-            : null}
+			: null}
 		</main>
 	);
 };

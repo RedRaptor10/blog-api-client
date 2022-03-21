@@ -188,13 +188,13 @@ main {
   margin-top: 8px;
 }
 
-/* Log In */
-#log-in-form, #sign-up-form {
+/* Log In, Sign Up, User Update */
+#log-in-form, #sign-up-form, #edit {
   width: 25%;
   margin: 0 auto 0 auto;
 }
 
-#log-in-form input, #sign-up-form input {
+#log-in-form input, #sign-up-form input, #edit input {
   display: block;
   background: var(--primary-color);
   width: 100%;
@@ -205,7 +205,7 @@ main {
   border-radius: 4px;
 }
 
-#log-in-form button, #sign-up-form button {
+#log-in-form button, #sign-up-form button, #edit button {
   background: var(--primary-color);
   padding: 4px 16px 4px 16px;
   color: var(--color);
@@ -213,13 +213,42 @@ main {
   border-radius: 4px;
 }
 
-#log-in-form button:hover, #sign-up-form button:hover {
+#log-in-form button:hover, #sign-up-form button:hover, #edit button:hover {
   color: #fff;
+}
+
+#edit #delete-btn {
+  margin-top: 12px;
+}
+
+#edit #delete-prompt {
+  margin-top: 12px;
+}
+
+#edit #delete-prompt button {
+  margin: 12px 12px 0 0;
 }
 
 #form-errors {
   list-style: disc;
   margin-top: 12px;
+}
+
+/* User */
+#user {
+  font-size: 20px;
+}
+
+#user div {
+  margin: 12px 0 12px 0;
+}
+
+#user a {
+  color: var(--link-color);
+}
+
+#user a:hover {
+  color: #fff;
 }
 
 /* Post */
