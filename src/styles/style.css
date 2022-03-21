@@ -52,6 +52,7 @@ table {
   --primary-color: rgb(32, 32, 32);
   --background-color: rgb(24, 24, 24);
   --color: rgb(224, 224, 224);
+  --link-color: rgb(128, 128, 128);
 }
 
 body {
@@ -185,4 +186,142 @@ main {
 
 .blog-post-date {
   margin-top: 8px;
+}
+
+/* Post */
+#post a {
+  color: var(--link-color);
+}
+
+#post a:hover {
+  color: #fff;
+}
+
+#post-author, #post-date {
+  margin-top: 12px;
+  font-size: 20px;
+  font-style: italic;
+}
+
+#post-content {
+  margin: 24px 0 24px 0;
+  font-size: 24px;
+}
+
+/* Comments */
+#post-comments-title {
+  margin: 24px 0 24px 0;
+}
+
+#post-comments-prompt {
+  margin-bottom: 24px;
+}
+
+#comment-form {
+  margin: 24px auto 24px auto;
+}
+
+#comment-form textarea {
+  background: var(--primary-color);
+  width: 100%;
+  height: 96px;
+  margin: 12px 0 12px 0;
+  color: #fff;
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+  resize: none;
+}
+
+#comment-form button {
+  background: var(--primary-color);
+  float: right;
+  padding: 4px 16px 4px 16px;
+  color: var(--color);
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+#comment-form button:hover {
+  color: #fff;
+}
+
+#comment-form:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#post-comments {
+  width: 50%;
+  margin: 32px auto 0 auto;
+}
+
+.comment-controls span {
+  color: var(--link-color);
+}
+
+.comment-controls span:hover {
+  color: #fff;
+}
+
+.comment-date {
+  margin-left: 12px;
+}
+
+.comment-controls {
+  float: right;
+}
+
+.comment-controls span {
+  color: var(--link-color);
+  cursor: pointer;
+}
+
+.comment-controls span:hover {
+  color: #fff;
+}
+
+.comment-delete {
+  margin-left: 12px;
+}
+
+.comment-content {
+  margin: 24px 0 24px 0;
+  clear: both;
+}
+
+.comment-update-form {
+  margin-top: 24px;
+}
+
+.comment-update-form textarea {
+  background: var(--primary-color);
+  width: 100%;
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+  resize: none;
+}
+
+.comment-update-form button {
+  background: var(--primary-color);
+  float: right;
+  margin-bottom: 12px;
+  padding: 4px 16px 4px 16px;
+  color: var(--color);
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+.comment-update-form button:hover {
+  color: #fff;
+}
+
+.comment-update-form:after {
+  content: '';
+  display: block;
+  clear: both;
 }

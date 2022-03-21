@@ -102,29 +102,28 @@ const Comment = ({user, setUser, comment, setComments, commentToUpdate, setComme
 
     return(
         <div className="comment">
-            <div>{comment.title}</div>
-            <div>by <Link to={'/users/' + comment.author.username}>{comment.author.username}</Link></div>
-            <div>{formatDate(comment.date)}</div>
-            {commentToUpdate === comment._id ?
-                <form className="comment-update-form" action="">
-                    <textarea id="comment-update-form-input" type="textarea" name="content" onChange={handleUpdateChange} value={commentUpdateForm.content}></textarea>
-                    <button type="submit" name="submit" onClick={updateComment}>Update</button>
-                </form>
-            :
-                <div>{comment.content}</div>
-            }
+            <span className="comment-author"><Link to={'/users/' + comment.author.username}>{comment.author.username}</Link></span>
+            <span className="comment-date">{formatDate(comment.date)}</span>
             {user && user.username === comment.author.username ?
-                <div>
-                    <div onClick={() => {
+                <span className="comment-controls">
+                    <span className="comment-edit" onClick={() => {
                         if (commentToUpdate !== comment._id) {
                             setCommentToUpdate(comment._id);
                         }
                         else {
                             setCommentToUpdate();
-                        }}}>Edit</div>
-                    <div onClick={deleteComment}>Delete</div>
-                </div>
+                        }}}>Edit</span>
+                    <span className="comment-delete" onClick={deleteComment}>Delete</span>
+                </span>
             : null}
+            {commentToUpdate === comment._id ?
+                <form className="comment-update-form" action="">
+                    <textarea type="textarea" name="content" onChange={handleUpdateChange} value={commentUpdateForm.content}></textarea>
+                    <button type="submit" name="submit" onClick={updateComment}>Update</button>
+                </form>
+            :
+                <p className="comment-content">{comment.content}</p>
+            }
         </div>
     );
 };
