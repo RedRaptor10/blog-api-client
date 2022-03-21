@@ -48,7 +48,7 @@ const Post = ({user, setUser}) => {
             },
             body: JSON.stringify({
                 post: postId,
-                author: user._id,
+                author: user.id,
                 date: new Date(),
                 content: form.content
             }),
@@ -86,42 +86,48 @@ const Post = ({user, setUser}) => {
     };
 
 	return(
-		<main id="post">
-            {post && post.author ?
-                <div id="post-container">
-                    <div id="post-info">
-                        <div>{post.title}</div>
-                        <div>by <Link to={'/users/' + post.author.username}>{post.author.username}</Link></div>
-                        <div>{formatDate(post.date)}</div>
-                        <div>{post.content}</div>
-                    </div>
+        post && post.author ?
+            <main id="post">
+                <div id="post-info">
+                    <h1 id="post-title">{post.title}</h1>
+                    <div id="post-author">by <Link to={'/users/' + post.author.username}>{post.author.username}</Link></div>
+                    <div id="post-date">{formatDate(post.date)}</div>
+                    <p id="post-content">{post.content}</p>
+                </div>
+                <hr />
+                <div id="post-comments">
+                    <h3 id="post-comments-title">Comments</h3>
+                    {!user ?
+                        <div id="post-comments-prompt">
+                            <Link to="/login">Log In</Link> or&nbsp;
+                            <Link to="/signup">Sign Up</Link> to comment on this post.
+                        </div>
+                    : null}
                     {user ?
                         <form id="comment-form" action="">
                             <label htmlFor="content">Post a Comment</label>
                             <textarea id="comment-form-input" type="textarea" name="content" onChange={handleChange}></textarea>
-                            <button type="submit" name="submit" onClick={submitForm}>Post</button>
+                            <button type="submit" name="submit" onClick={submitForm}>Submit</button>
                             {formErrors.length !== 0 ?
                                 formErrors.map((formError, i) => {
                                     return(
-                                        <div key={i}>{formError.msg}</div>
+                                        <p key={i}>{formError.msg}</p>
                                     )
                                 })
                             : null}
                         </form>
                     : null}
-                    <div id="post-comments">
-                        {comments.length !== 0 ?
-                            comments.map(comment => {
-                                return(
-                                    <Comment key={comment._id} user={user} setUser={setUser} comment={comment} setComments={setComments}
-                                        commentToUpdate={commentToUpdate} setCommentToUpdate={setCommentToUpdate} />
-                                )
-                            })
-                        : null}
-                    </div>
+                    {comments.length !== 0 ?
+                        comments.map(comment => {
+                            return(
+                                <Comment key={comment._id} user={user} setUser={setUser} comment={comment} setComments={setComments}
+                                    commentToUpdate={commentToUpdate} setCommentToUpdate={setCommentToUpdate} />
+                            )
+                        })
+                    : null}
                 </div>
-            : null}
-		</main>
+            </main>
+        : null
 	);
 };
 
