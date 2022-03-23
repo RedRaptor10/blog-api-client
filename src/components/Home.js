@@ -18,16 +18,18 @@ const Home = () => {
 				{posts.length !== 0 ?
 					posts.map((post) => {
 						return(
-							<Link className="blog-post-container" to={'/posts/' + post._id} key={post._id}>
-								<div className="blog-post">
-									<div className="blog-post-cover" style={{background: post.cover}}></div>
-									<div className="blog-post-info">
-										<h1 className="blog-post-title">{post.title}</h1>
-										by <span className="blog-post-author">{post.author.username}</span>
-										<div className="blog-post-date">{formatDate(post.date)}</div>
+							post.published ?
+								<Link className="blog-post-container" to={'/posts/' + post._id} key={post._id}>
+									<div className="blog-post">
+										<div className="blog-post-cover" style={{background: post.cover}}></div>
+										<div className="blog-post-info">
+											<h1 className="blog-post-title">{post.title}</h1>
+											by <span className="blog-post-author">{post.author.username}</span>
+											<div className="blog-post-date">{formatDate(post.date)}</div>
+										</div>
 									</div>
-								</div>
-							</Link>
+								</Link>
+							: null
 						)
 					})
 				: null}

@@ -86,7 +86,7 @@ const Post = ({user, setUser}) => {
     };
 
 	return(
-        post && post.author ?
+        post && post.author && post.published ?
             <main id="post">
                 <div id="post-info">
                     <h1 id="post-title">{post.title}</h1>
