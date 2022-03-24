@@ -38,8 +38,8 @@ const SignUp = ({user}) => {
             if (res.errors) { setFormErrors(res.errors); } // Username/password required
             else if (!res.user) { setFormErrors([{ msg: res.info.message }]); } // Incorrect username/password
             else {
-                // Success. Redirect to Home page
-                navigate('/');
+                // Success. Redirect to Log In page
+                navigate('/login');
             }
         });
     };
