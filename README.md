@@ -2,19 +2,14 @@
 
 A blog API client app created in NodeJS using Express through [TheOdinProject](https://www.theodinproject.com) online course. The purpose of this project is to create a fully-functional REST API back-end that can be called from any client front-end.
 
-**Server**
-[View Repo](https://github.com/RedRaptor10/blog-api-server/)
+**Server** - [View Repo](https://github.com/RedRaptor10/blog-api-server/)
 
-**Client**
-[View Demo](https://redraptor10.github.io/blog-api-client/)
-[View Repo](https://github.com/RedRaptor10/blog-api-client/)
+**Client** - [View Demo](https://redraptor10.github.io/blog-api-client/) | [View Repo](https://github.com/RedRaptor10/blog-api-client/)
 
-**Admin**
-[View Demo](https://redraptor10.github.io/blog-api-admin/)
-[View Repo](https://github.com/RedRaptor10/blog-api-admin/)
+**Admin** - [View Demo](https://redraptor10.github.io/blog-api-admin/) | [View Repo](https://github.com/RedRaptor10/blog-api-admin/)
 
-Admin Username: admin
-Admin Password: admin
+- Admin Username: admin
+- Admin Password: admin
 
 # Features
 
