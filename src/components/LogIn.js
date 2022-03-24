@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const LogIn = () => {
+const LogIn = ({setUser}) => {
     const [form, setForm] = useState({
         username: '',
         password: ''
     });
-
     const [formErrors, setFormErrors] = useState([]);
+    const navigate = useNavigate();
 
     const handleChange = event => {
         setForm({
@@ -34,9 +35,10 @@ const LogIn = () => {
             if (res.errors) { setFormErrors(res.errors); } // Username/password required
             else if (!res.user) { setFormErrors([{ msg: res.info.message }]); } // Incorrect username/password
             else {
-                // Success. Set token as a cookie and redirect to Home page
+                // Success. Set token as a cookie, set user, and redirect to Home page
                 document.cookie = 'blog_api_token=' + res.token + '; SameSite=Lax; path=/';
-                window.location.href = '/';
+                setUser(res.user);
+                navigate(-1); // Navigate to previous page in history stack
             }
         });
     };

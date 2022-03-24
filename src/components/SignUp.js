@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = ({user}) => {
     const [form, setForm] = useState({
@@ -6,8 +7,8 @@ const SignUp = ({user}) => {
         password: '',
         confirmPassword: ''
     });
-
     const [formErrors, setFormErrors] = useState([]);
+    const navigate = useNavigate();
 
     const handleChange = event => {
         setForm({
@@ -38,7 +39,7 @@ const SignUp = ({user}) => {
             else if (!res.user) { setFormErrors([{ msg: res.info.message }]); } // Incorrect username/password
             else {
                 // Success. Redirect to Home page
-                window.location.href = '/';
+                navigate('/');
             }
         });
     };

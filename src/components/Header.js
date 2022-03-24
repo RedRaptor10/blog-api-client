@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = ({user, setUser, deleteCookie}) => {
+    const navigate = useNavigate();
+
     const logOut = () => {
         fetch(process.env.REACT_APP_SERVER + 'api/logout', {mode: 'cors'})
         .then(function() {
             setUser();
             deleteCookie('blog_api_token');
-            window.location.href = '/';
+            navigate(0); // Navigate to current page in history stack
         });
     };
 

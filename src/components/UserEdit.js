@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const UserEdit = ({user, setUser}) => {
@@ -9,6 +10,7 @@ const UserEdit = ({user, setUser}) => {
     });
     const [formErrors, setFormErrors] = useState([]);
     const [toggleDelete, setToggleDelete] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = event => {
         setForm({
@@ -66,7 +68,7 @@ const UserEdit = ({user, setUser}) => {
                 .then(function(res) {
                     // Success. Set token as a cookie and redirect to Home page
                     document.cookie = 'blog_api_token=' + res.token + '; SameSite=Lax; path=/';
-                    window.location.href = '/';
+                    navigate('/');
                 });
             }
         });
@@ -97,7 +99,7 @@ const UserEdit = ({user, setUser}) => {
         .then(function(res) {
             // Success. Delete cookie and redirect to Home page
             deleteCookie('blog_api_token');
-            window.location.href = '/';
+            navigate('/');
         });
     };
 
