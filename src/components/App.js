@@ -29,7 +29,7 @@ const App = () => {
 			mode: 'cors'
 		};
 
-		fetch('http://localhost:3000/api/auth', options)
+		fetch(process.env.SERVER + 'api/auth', options)
 		.then(function(res) {
 			// If unauthorized then unset user, delete cookie, and throw error
 			if (res.statusText === 'Unauthorized') {

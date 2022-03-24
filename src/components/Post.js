@@ -14,11 +14,11 @@ const Post = ({user, setUser}) => {
 
     // Get API data on componentDidUpdate
 	useEffect(() => {
-        fetch('http://localhost:3000/api/posts/' + postId, {mode: 'cors'})
+        fetch(process.env.SERVER + 'api/posts/' + postId, {mode: 'cors'})
 		.then(function(res) { return res.json(); })
         .then(function(res) { setPost(res); });
 
-        fetch('http://localhost:3000/api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
+        fetch(process.env.SERVER + 'api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
         .then(function(res) { return res.json(); })
         .then(function(res) { setComments(res); });
     }, [postId]);
@@ -55,7 +55,7 @@ const Post = ({user, setUser}) => {
             mode: 'cors'
         };
 
-        fetch('http://localhost:3000/api/posts/' + postId + '/comments/create', options)
+        fetch(process.env.SERVER + 'api/posts/' + postId + '/comments/create', options)
         .then(function(res) {
             // If unauthorized then unset user, delete cookie, and throw error
             if (res.statusText === 'Unauthorized') {
@@ -75,7 +75,7 @@ const Post = ({user, setUser}) => {
                 setForm({ content: '' });
                 setFormErrors([]);
 
-                fetch('http://localhost:3000/api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
+                fetch(process.env.SERVER + 'api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
                 .then(function(res) { return res.json(); })
                 .then(function(res) { setComments(res); });
             }

@@ -7,7 +7,7 @@ const Home = () => {
 
 	// Get API data on componentDidMount
 	useEffect(() => {
-		fetch('http://localhost:3000/api/posts?sort=date&order=desc', {mode: 'cors'})
+		fetch(process.env.SERVER + 'api/posts?sort=date&order=desc', {mode: 'cors'})
 		.then(function(res) { return res.json(); })
 		.then(function(res) { setPosts(res); });
 	}, []);

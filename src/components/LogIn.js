@@ -28,7 +28,7 @@ const LogIn = () => {
             mode: 'cors'
         };
 
-        fetch('http://localhost:3000/api/login', options)
+        fetch(process.env.SERVER + 'api/login', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             if (res.errors) { setFormErrors(res.errors); } // Username/password required

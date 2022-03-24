@@ -43,7 +43,7 @@ const UserEdit = ({user, setUser}) => {
             mode: 'cors'
         };
 
-        fetch('http://localhost:3000/api/users/' + user.username + '/update', options)
+        fetch(process.env.SERVER + 'api/users/' + user.username + '/update', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             if (res.errors) { setFormErrors(res.errors); } // Username/password required
@@ -61,7 +61,7 @@ const UserEdit = ({user, setUser}) => {
                     mode: 'cors'
                 };
         
-                fetch('http://localhost:3000/api/login', options)
+                fetch(process.env.SERVER + 'api/login', options)
                 .then(function(res) { return res.json(); })
                 .then(function(res) {
                     // Success. Set token as a cookie and redirect to Home page
@@ -92,7 +92,7 @@ const UserEdit = ({user, setUser}) => {
             mode: 'cors'
         };
 
-        fetch('http://localhost:3000/api/users/' + user.username + '/delete', options)
+        fetch(process.env.SERVER + 'api/users/' + user.username + '/delete', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             // Success. Delete cookie and redirect to Home page
