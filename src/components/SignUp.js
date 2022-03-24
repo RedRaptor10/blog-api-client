@@ -31,7 +31,7 @@ const SignUp = ({user}) => {
             mode: 'cors'
         };
 
-        fetch(process.env.SERVER + 'api/users/create', options)
+        fetch(process.env.REACT_APP_SERVER + 'api/users/create', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             if (res.errors) { setFormErrors(res.errors); } // Username/password required

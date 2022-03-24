@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = ({user, setUser, deleteCookie}) => {
     const logOut = () => {
-        fetch(process.env.SERVER + 'api/logout', {mode: 'cors'})
+        fetch(process.env.REACT_APP_SERVER + 'api/logout', {mode: 'cors'})
         .then(function() {
             setUser();
             deleteCookie('blog_api_token');

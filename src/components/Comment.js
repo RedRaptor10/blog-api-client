@@ -39,7 +39,7 @@ const Comment = ({user, setUser, comment, setComments, commentToUpdate, setComme
             mode: 'cors'
         };
 
-        fetch(process.env.SERVER + 'api/posts/' + postId + '/comments/' + comment._id + '/update', options)
+        fetch(process.env.REACT_APP_SERVER + 'api/posts/' + postId + '/comments/' + comment._id + '/update', options)
         .then(function(res) {
             // If unauthorized then unset user, delete cookie, and throw error
             if (res.statusText === 'Unauthorized') {
@@ -54,7 +54,7 @@ const Comment = ({user, setUser, comment, setComments, commentToUpdate, setComme
             // Success. Hide update comment form and fetch comments again.
             setCommentToUpdate();
 
-            fetch(process.env.SERVER + 'api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
+            fetch(process.env.REACT_APP_SERVER + 'api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
             .then(function(res) { return res.json(); })
             .then(function(res) { setComments(res); });
         })
@@ -78,7 +78,7 @@ const Comment = ({user, setUser, comment, setComments, commentToUpdate, setComme
             mode: 'cors'
         };
 
-        fetch(process.env.SERVER + 'api/posts/' + postId + '/comments/' + comment._id + '/delete', options)
+        fetch(process.env.REACT_APP_SERVER + 'api/posts/' + postId + '/comments/' + comment._id + '/delete', options)
         .then(function(res) {
             // If unauthorized then unset user, delete cookie, and throw error
             if (res.statusText === 'Unauthorized') {
@@ -91,7 +91,7 @@ const Comment = ({user, setUser, comment, setComments, commentToUpdate, setComme
         })
         .then(function(res) {
             // Success. Fetch comments again.
-            fetch(process.env.SERVER + 'api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
+            fetch(process.env.REACT_APP_SERVER + 'api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
             .then(function(res) { return res.json(); })
             .then(function(res) { setComments(res); });
         })
